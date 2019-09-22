@@ -3,11 +3,17 @@
     <div class="vertical">
       <div class="formulario">
         <img src="/assets/logo.png" alt="">
-          <form>
-              <input type="text" placeholder="Username">
-              <input type="password" placeholder="Password">
-              <a (click)="ir()">Login</a>
-              <p>¿Aún no tienes una cuenta?<br>Registrate aquí</p>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <input type="text" placeholder="Username" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+              <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                  <div *ngIf="f.username.errors.required">Username is required</div>
+              </div>
+              <input type="password" placeholder="Password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+              </div>
+              <button [disabled]="loading" class="btn btn-primary">Login</button>
+              <p>¿Aún no tienes una cuenta?<br><a routerLink="/register">Registrate aquí</a></p>
           </form>
       </div>
     </div>

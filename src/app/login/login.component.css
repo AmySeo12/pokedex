@@ -39,7 +39,7 @@ div.formulario input{
     border-radius: 20px;
     margin-bottom: 5%;
 }
-div.formulario a{
+div.formulario button{
     display: inline-block;
     background-color: #0F006D;
     border: none;
