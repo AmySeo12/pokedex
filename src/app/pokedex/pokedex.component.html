@@ -1,3 +1,33 @@
-<p>
-  pokedex works!
-</p>
+<div class="ng-autocomplete">
+  <ng-autocomplete 
+  placeholder="Buscar un pokemon"
+  [data]="nombres"
+  [searchKeyword]="keyword"
+  [itemTemplate]="itemTemplate"
+  [notFoundTemplate]="notFoundTemplate"
+  [(ngModel)]='data'>                                 
+  </ng-autocomplete>
+   
+  <ng-template #itemTemplate let-item>
+    <a [innerHTML]="item"></a>
+  </ng-template>
+   
+  <ng-template #notFoundTemplate let-notFound>
+    <div [innerHTML]="notFound"></div>
+  </ng-template>
+</div>
+<div>
+  <p (click)="filtrar('nombre')">Nombre</p>
+  <select name="" id="" [(ngModel)]='type' (change)='filtro(type)'>
+    <option value="">Todos</option>
+    <option *ngFor='let tipo of types' value="{{tipo.name}}">{{tipo.name}}</option>
+  </select>
+  <p (click)="filtrar('tipo')">Tipo</p>
+</div>
+<div class="container" infiniteScroll [infiniteScrollDistance]="2"  (scrolled)="onScroll()">
+  <div *ngFor="let pokemon of pokemones | name: data | type: type" >
+    <p>{{pokemon.name}}</p>
+    <span (click)="update(pokemon)">Me gusta</span>
+  </div>
+</div>
+    

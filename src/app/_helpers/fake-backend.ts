@@ -26,6 +26,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return authenticate();
                 case url.endsWith('/users') && method === 'GET':
                     return getUsers();
+                case url.match(/\/users\/\d+$/) && method === 'PUT':
+                    return update();
                 case url.match(/\/users\/\d+$/) && method === 'GET':
                     return getUserById();
                 case url.match(/\/users\/\d+$/) && method === 'DELETE':
@@ -52,6 +54,19 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             return ok();
         }
 
+        function update(){
+            const user= body
+            users.find(
+                x => {
+                    if(x.username === user.username){
+                        x.pokemonsFavorite = user.pokemonsFavorite;
+                    }
+                }
+            )
+            localStorage.setItem('users', JSON.stringify(users));
+            return ok();
+        }
+
         function authenticate() {
             const { username, password } = body;
             const user = users.find(x => x.username === username && x.password === password);
@@ -61,7 +76,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 username: user.username,
                 firstName: user.firstName,
                 lastName: user.lastName,
-                token: 'fake-jwt-token'
+                token: 'fake-jwt-token',
+                pokemonsFavorite: user.pokemonsFavorite
             })
         }
 
