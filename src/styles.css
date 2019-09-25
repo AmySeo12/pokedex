@@ -1,7 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Play";
+    src: url(assets/fonts/Play-Regular.ttf);
+}
+@font-face {
+    font-family: "Play Bold";
+    src: url(assets/fonts/Play-Bold.ttf);
+}
 body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Arial";
+    font-family: "Play";
 }
+html{
+    height: 100vh;
+    background-image: url(/assets/fondo_pokedex.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.ng-autocomplete .autocomplete-container{
+    height: 30px;
+    box-shadow: 0px 0;
+    margin-top: 12px;
+}
+.ng-autocomplete .autocomplete-container .input-container input{
+    height: 100%;
+    border: 2px solid #000;
+    padding: 5px;
+    padding-left: 25px;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,.5);
+}
+
+
+@media(min-width: 600px){
+    .ng-autocomplete .autocomplete-container .input-container input{
+        font-size: 1em;
+        padding: 10px;
+        padding-left: 35px;
+    }
+    .ng-autocomplete .autocomplete-container{
+        margin-top: 25px;
+    }
+}
+
+

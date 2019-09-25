@@ -1,0 +1,64 @@
+
+<div class="contenedor-detalle">
+  <div class="container text-center" *ngIf="show">
+    <div class="row">
+      <div class="col-7">
+          <img [src]="pokemon.sprites.front_default" alt="" class="pokemon">
+      </div>
+      <div class="col-5">
+        <div class="d-table">
+        <div class="cell">
+          <div class="border-left">
+              <div class="info">
+                <p>{{pokemon.weight}}kg</p>
+                <span>Peso</span>
+              </div>
+              <div class="info">
+                <p>{{pokemon.height}}m</p>
+                <span>Altura</span>
+              </div>
+              <div class="info">
+                <img src="/assets/grass.png" alt="Grass">
+                <img src="/assets/water.png" alt="Grass">
+                <br>
+                <span>Planta | Agua</span>
+              </div>
+          </div>
+          
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p class="descripcion">Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6 caracteristicas">
+        <div *ngFor="let state of pokemon.stats">
+            <p>{{state.stat.name}}</p>
+            <p><ngb-progressbar type="info" [value]="state.base_stat"></ngb-progressbar></p>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="debilidades">
+          <p>Debilidades</p>
+            <img src="/assets/grass.png" alt="Grass">
+            <img src="/assets/water.png" alt="Grass">
+            <br>
+            <span>Planta | Agua</span>
+            <br>
+            <img src="/assets/grass.png" alt="Grass">
+            <img src="/assets/water.png" alt="Grass">
+            <br>
+            <span>Planta | Agua</span>
+        </div>
+        <div class="categoria">
+          <p>Categoria</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

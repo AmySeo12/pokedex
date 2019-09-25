@@ -1,20 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" routerLink="/">Todos los pokemons</a>
-            <a class="nav-item nav-link" routerLink="/favoritos">Mis pokemons</a>
-            <a class="nav-item nav-link" (click)="logout()">Logout</a>
-        </div>
-</nav>
+<div  [ngClass]="{ 'body': currentUser }">
+        <img src="/assets/rayo.png" alt="Rayo"  *ngIf="currentUser">
+    
     
     <!-- main app container -->
-    <div class="jumbotron">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 offset-sm-3">
+    <div>
+        <div>
+            <div >
+                <div [@routeAnimation]="getAnimationData(routerOutlet)">
                     <alert></alert>
-                    <router-outlet></router-outlet>
+                    <router-outlet #routerOutlet="outlet"></router-outlet>
                 </div>
             </div>
         </div>
     </div>
+</div>

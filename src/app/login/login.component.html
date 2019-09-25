@@ -2,14 +2,16 @@
   <div class="table">
     <div class="vertical">
       <div class="formulario">
-        <img src="/assets/logo.png" alt="">
+        <img src="/assets/rayo.png" alt="Rayo de pikachu" class="rayo_derecha">
+        <img src="/assets/rayo.png" alt="Rayo de pikachu" class="rayo_izquierda">
+        <img src="/assets/logo.png" alt="Logo de pokemon">
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-              <input type="text" placeholder="Username" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-              <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <input type="text" placeholder="Username" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+              <div *ngIf="submitted && f.username.errors" class="invalidfeedback">
                   <div *ngIf="f.username.errors.required">Username is required</div>
               </div>
-              <input type="password" placeholder="Password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <input type="password" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+              <div *ngIf="submitted && f.password.errors" class="invalidfeedback">
                   <div *ngIf="f.password.errors.required">Password is required</div>
               </div>
               <button [disabled]="loading" class="btn btn-primary">Login</button>

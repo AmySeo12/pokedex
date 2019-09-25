@@ -1,3 +1,59 @@
 input:focus{
     outline: none;
 }
+
+div.body img{
+    position: absolute;
+    width: 58%;
+    top: -65px;
+    left: 62%;
+    z-index: 0;
+    transform: rotate(14.7deg);
+}
+div.body{
+    padding: 10% 5%;
+    background-image: url("/assets/fondo_pokedex.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow-x: hidden;
+    position: relative;
+}
+
+@media(min-width: 768px){
+    div.body img{
+        width: 43%;
+        left: 71%;
+    }
+}
+@media(min-width: 1024px){
+    div.body{
+        padding: 10% 20%;
+    }
+    div.body img{
+        width: 38%;
+        left: 60%;
+        top: -105px;
+    }
+}
+
+@media(min-width: 1280px){
+    div.body{
+        padding: 5% 25%;
+    }
+    div.body img {
+        width: 31%;
+        left: 60%;
+        top: -151px;
+    }
+}
+@media (min-width: 1366px){
+    div.body{
+        padding: 5% 30%;
+    }
+    div.body img {
+        width: 23%;
+        left: 57%;
+        top: -69px;
+    }
+}

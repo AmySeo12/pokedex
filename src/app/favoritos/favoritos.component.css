@@ -1,0 +1,170 @@
+.ng-autocomplete{
+    width: 100%;
+    position: relative;
+}
+.ng-autocomplete i{
+    position: absolute;
+    top: 7px;
+    left: 7px;
+}
+.ng-autocomplete .autocomplete-container{
+    height: 30px;
+    box-shadow: 0px;
+}
+.autocomplete-container .input-container input{
+    height: 100%;
+}
+
+select{
+    background-color: transparent;
+    width: 100%;
+    border: 2px solid #000;
+    border-radius: 12px;
+    height: 30px;
+}
+
+.mg-t{
+    margin-top: 5%;
+}
+.select{
+    background-color: rgba(255,255,255,.7);
+    padding: 5px;
+    margin-top: 12px;
+    margin-bottom: 15px;
+    text-align: center
+}
+.select p{
+    font-weight: 600;
+    margin-bottom: 0
+}
+
+.pokebola{
+    position: relative;
+    margin: auto;
+    text-align: center;
+    border-radius: 20px;
+    background: #fff;
+    padding-bottom: 16px;
+    margin-bottom: 10px;
+}
+.pokebola p{
+    font-size: .8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 0px;
+}
+.pokebola img{
+    margin-bottom: -5px;
+    width: 100%;
+}
+.pokebola .container img{
+    width: 49%;
+}
+.pokebola .container .col-7{
+    padding: 0 8px;
+}
+.pokebola .container .col-5 i{
+    vertical-align: bottom;
+}
+.img_pokemon{
+    width: 40px;
+    height: 40px;
+    left: 42.5px;
+    top: 42.5px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid;
+    position: absolute;
+}
+.img_pokemon i{
+    font-size: 1.5em;
+}
+.color-red{
+    color: #E30A17;
+}
+.contenedor-pokedex{
+    padding: 0 2px;
+}
+.binvenida{
+    position: relative
+}
+nav.container div.col-6{
+    padding-right: 10px;
+    padding-left: 10px;
+    text-align: center
+}
+nav.container div.col-6 a{
+    color: #fff;
+    font-size: .8em; 
+    padding-left: 0;
+    padding-right: 0;   
+}
+nav.container div.col-6:first-child{
+    background-color: #2B72B8
+}
+nav.container div.col-6:last-child{
+    background-color: #FFCB05;
+}
+.navbar{
+    padding: 0;
+}
+.bienvenida h2 span{
+    color: #fff;
+    background-color: #0F006D;
+    padding-left: 8px;
+}
+.bienvenida h2{
+    font-size: 1.65em;
+    margin-bottom: 15px;
+    font-weight: 600;
+    position: relative;
+}
+.bienvenida h2 i{
+    float: right;
+}
+@media (min-width: 600px) {
+    .bienvenida h2{
+        font-size: 3.8em;
+        margin-bottom: 26px;
+    }
+    .ng-autocomplete i{
+        top: 12px;
+        left: 14px;
+    }
+    .select p{
+        font-size: 1.2em;
+    }
+}
+@media (min-width: 768px){
+    .pokebola .container img{
+        width: 37%;
+    }
+    .pokebola p{
+        margin-bottom: 4px;
+        font-size: 1.5em;
+    }
+    .pokebola .container .col-5 i{
+        font-size: 2em;
+    }
+    .select .mg-t{
+        margin-top: 0;
+    }
+    .select{
+        padding-top: 17px;
+        margin-top: 30px;
+    }
+}
+@media (min-width: 1366px){
+    nav.container  div.col-6 a{
+        font-size: 1.2em;
+    }
+    nav.container  div.col-6 a{
+        font-size: 1.2em;
+    }
+    .pokebola p{
+        font-size: 1.2em;
+    }
+}

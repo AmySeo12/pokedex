@@ -3,9 +3,7 @@ import { Router } from '@angular/router';
 import { AlertService, PokedexService, AuthenticationService,UserService } from '../_services';
 import { OrderPipe } from 'ngx-order-pipe';
 import { first } from 'rxjs/operators';
-import { url } from 'inspector';
 import { User } from '../_models';
-import { type } from 'os';
 
 @Component({
   selector: 'app-pokedex',
@@ -23,6 +21,7 @@ export class PokedexComponent implements OnInit {
   user;
   nombres= [];
   types;
+  active = false;
   constructor(private pokedexService: PokedexService, 
     private alertService: AlertService,
     private orderPipe: OrderPipe,
@@ -34,18 +33,17 @@ export class PokedexComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.cargarPage(this.index);
     this.userService.getById(this.id)
     .subscribe(
       data=>{
         this.user= data;
       }
     )
+    this.cargarPage(this.index);
     this.pokedexService.getType()
     .subscribe(
       data=>{
-        this.types= data.results;
-        console.log(this.types)
+        this.types= data["results"];
       }
     )
   }
@@ -54,10 +52,12 @@ export class PokedexComponent implements OnInit {
     this.pokedexService.getAll(indice)
     .subscribe(
         data => {
-            this.alertService.success('Registration successful', true);
             var url= '';
-            this.total= data.count;
-            this.pokemonesTemporal= data.results
+            this.user['pokemonsFavorite'].filter(x=>{
+              x.favorite= true;
+            })
+            this.total= data['count'];
+            this.pokemonesTemporal= data["results"];
             this.pokemonesTemporal= this.orderPipe.transform(this.pokemonesTemporal, 'name');
             for(var i= 0; i < this.pokemonesTemporal.length; i++){
               url= this.pokemonesTemporal[i].name;
@@ -65,23 +65,23 @@ export class PokedexComponent implements OnInit {
               this.pokedexService.getCharacteristicsAll(url)
               .subscribe(
                 info=>{
-                  info.typeName=[];
-                  this.user.pokemonsFavorite.find(x=>{
-                    if(x.name == info.name){
-                      info.favorite= true;
-                    }else{
-                      info.favorite= false;
-                    }
-                  })
-                  info.types.find(x=>{
-                    info.typeName.push(x['type'].name)
+                  info["typeName"]=[];
+                  if(this.user.pokemonsFavorite){
+                    this.user.pokemonsFavorite.find(x=>{
+                      if(x.name == info["name"]){
+                        info = x;
+                      }
+                    })
+                  }
+                  
+                  info["types"].find(x=>{
+                    info["typeName"].push(x['type'].name)
                   })
                   this.pokemones.push(info);
                 }
               )
             }
             this.pokemones= this.orderPipe.transform(this.pokemones, 'name');
-            console.log(this.pokemones)
         },
         error => {
             this.alertService.error(error);
@@ -90,6 +90,7 @@ export class PokedexComponent implements OnInit {
 
   onScroll(){
     this.index += 20;
+    console.log(this.total)
     if(this.index < this.total){
       this.cargarPage(this.index);
     }
@@ -104,41 +105,30 @@ export class PokedexComponent implements OnInit {
       this.user.pokemonsFavorite= this.user.pokemonsFavorite.filter(x=> {return x.name !== pokemon.name})
     }else{
       this.user.pokemonsFavorite.push(pokemon);
+      this.user.pokemonsFavorite.filter(x=>{
+        x.favorite = true;
+      })
     }
     this.userService.update(this.user)
     .pipe(first())
     .subscribe(
         data => {
-            this.alertService.success('Registration successful', true);
-            console.log('Si entre');
         },
         error => {
-            this.alertService.error(error);
         });
   }
 
   filtrar(item){
     var name;
-    if(item == 'name'){
-      this.pokemones= this.orderPipe.transform(this.pokemones, 'name');
+    if(item == 'tipo'){
+      this.active= true;
     }else{
-      this.pokemones
-      .find(x=>{
-        x.types.find(y=>{
-          console.log(y['type'].name);
-        })
-      })
+      this.active= false;
+      this.pokemones= this.orderPipe.transform(this.pokemones, 'name');
     }
     
   }
-  filtro(value){
-    console.log(value)
-    return this.pokemones.find(x=>{
-      return x.typeName.find(y=>{
-        return y == value;
-      })
-    })
-    //return it.typeName[0] == terms;
-  }
+
+  
 
 }

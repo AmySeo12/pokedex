@@ -64,7 +64,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 }
             )
             localStorage.setItem('users', JSON.stringify(users));
-            return ok();
+            return ok({
+                pokemonsFavorite: user.pokemonsFavorite
+            });
         }
 
         function authenticate() {

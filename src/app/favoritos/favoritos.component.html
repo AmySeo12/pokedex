@@ -1,3 +1,61 @@
-<p>
-  favoritos works!
-</p>
+<div class="bienvenida">
+    <h2><span>Bienvenido</span> {{currentUser.username}} <i class="fas fa-power-off" (click)="logout()"></i></h2>
+</div>
+
+<nav class="container">
+    <div class="row">
+        <div class="col-6">
+            <a class="nav-item nav-link" routerLink="/">Todos los pokemons</a>
+        </div>
+        <div class="col-6">
+            <a class="nav-item nav-link" routerLink="/favoritos">Mis pokemons</a>
+        </div>
+    </div>
+</nav>
+<div class="ng-autocomplete">
+    <i class="fas fa-search"></i>
+    <ng-autocomplete 
+    placeholder="Buscar un pokemon"
+    [data]="nombres"
+    [searchKeyword]="keyword"
+    [itemTemplate]="itemTemplate"
+    [notFoundTemplate]="notFoundTemplate"
+    [(ngModel)]='data'>                                 
+    </ng-autocomplete>
+     
+    <ng-template #itemTemplate let-item>
+      <a [innerHTML]="item"></a>
+    </ng-template>
+     
+    <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+    </ng-template>
+  </div>
+  <div class="select">
+    <p>Mis Favoritos</p>
+  </div>
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="col-4 contenedor-pokedex" *ngFor="let pokemon of pokemones | name: data | type: type" >
+            <div class="pokebola">
+                <img *ngIf="pokemon.sprites.front_default" [src]="pokemon.sprites.front_default" alt="{{pokemon.name}}">
+                <img *ngIf="!pokemon.sprites.front_default" src="/assets/sin_imagen.png" alt="{{pokemon.name}}">
+                <p>{{pokemon.name}}</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-7">
+                            <img *ngFor="let type of pokemon.types" src="/assets/{{type.type.name}}.png" alt="">  
+                        </div>
+                        <div class="col-5">
+                          <i class="fas fa-heart" [ngClass]="{'color-red':pokemon.favorite}" (click)="update(pokemon)"></i>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+  

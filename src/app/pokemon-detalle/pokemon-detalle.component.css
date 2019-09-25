@@ -1,0 +1,68 @@
+.contenedor-detalle{
+    background: #F9F9F9;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    margin-left: -6%;
+    margin-right: -6%;
+    margin-top: 10%;
+    margin-bottom: -11%;
+}
+.contenedor-detalle img.pokemon{
+    width: 100%;
+}
+.contenedor-detalle .d-table .cell .info p{
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 0;
+    line-height: 1;
+}
+.contenedor-detalle .d-table .cell .info{
+    margin-bottom: 6px;
+}
+.contenedor-detalle .d-table .cell .info img{
+    width: 28%;
+} 
+.contenedor-detalle .d-table .cell .info span, .debilidades span{
+    font-size: 13px;
+    color: #AAAAAA;
+}
+.contenedor-detalle .d-table{
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.contenedor-detalle .d-table .cell{
+    display: table-cell;
+    vertical-align: middle;
+}
+.contenedor-detalle .d-table .cell .border-left{
+    border-left: 1px solid #AAAAAA !important;
+}
+.descripcion{
+    line-height: 1;
+    text-align: center;
+    font-size: .9em;
+    color: #616161;
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #aaaaaa;
+    padding: 11px 0;
+}
+.caracteristicas p:nth-child(2n-1){
+    font-weight: 600;
+    margin-bottom: 0;
+    font-size: 15px;
+    color: #616161;
+    text-align: right;
+}
+.caracteristicas{
+    border-right: 1px solid #AAAAAA;
+}
+
+.debilidades img{
+    width: 20%;
+}
+.debilidades p{
+    font-weight: 600;
+    margin-bottom: 5px;
+}
