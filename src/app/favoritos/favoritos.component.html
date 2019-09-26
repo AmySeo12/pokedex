@@ -39,9 +39,11 @@
       <div class="row">
         <div class="col-4 contenedor-pokedex" *ngFor="let pokemon of pokemones | name: data | type: type" >
             <div class="pokebola">
-                <img *ngIf="pokemon.sprites.front_default" [src]="pokemon.sprites.front_default" alt="{{pokemon.name}}">
-                <img *ngIf="!pokemon.sprites.front_default" src="/assets/sin_imagen.png" alt="{{pokemon.name}}">
-                <p>{{pokemon.name}}</p>
+                <a [routerLink]="['/pokemon', pokemon.id]">
+                    <img *ngIf="pokemon.sprites.front_default" [src]="pokemon.sprites.front_default" alt="{{pokemon.name}}">
+                    <img *ngIf="!pokemon.sprites.front_default" src="/assets/sin_imagen.png" alt="{{pokemon.name}}">
+                    <p>{{pokemon.name}}</p>
+                </a>
                 <div class="container">
                     <div class="row">
                         <div class="col-7">

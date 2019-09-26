@@ -122,6 +122,9 @@ nav.container div.col-6:last-child{
     font-weight: 600;
     position: relative;
 }
+.pokebola a{
+    color: inherit;
+}
 .bienvenida h2 i{
     float: right;
 }

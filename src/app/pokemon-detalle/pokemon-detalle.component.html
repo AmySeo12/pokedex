@@ -1,4 +1,7 @@
-
+<a [routerLink]="['/']" class="icono_regresar"><i class="fas fa-arrow-left icono_regresar"></i></a>
+<p class="name" *ngIf="show">{{pokemon.name}} 
+  <img *ngFor="let genre of genre" src="/assets/{{genre}}.png" alt="{{genre}}">
+</p>
 <div class="contenedor-detalle">
   <div class="container text-center" *ngIf="show">
     <div class="row">
@@ -17,11 +20,10 @@
                 <p>{{pokemon.height}}m</p>
                 <span>Altura</span>
               </div>
-              <div class="info">
-                <img src="/assets/grass.png" alt="Grass">
-                <img src="/assets/water.png" alt="Grass">
+              <div class="info tipos">
+                <img *ngFor="let tipo of pokemon.types" src="/assets/{{tipo.type.name}}.png" alt="Grass">
                 <br>
-                <span>Planta | Agua</span>
+                <span *ngFor="let tipo of pokemon.types">{{tipo.type.name}}</span>
               </div>
           </div>
           
@@ -31,7 +33,9 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <p class="descripcion">Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem.</p>
+        <p class="descripcion" >
+          {{descripcion}}
+        </p>
       </div>
     </div>
     <div class="row">
@@ -44,19 +48,28 @@
       <div class="col-6">
         <div class="debilidades">
           <p>Debilidades</p>
-            <img src="/assets/grass.png" alt="Grass">
-            <img src="/assets/water.png" alt="Grass">
-            <br>
-            <span>Planta | Agua</span>
-            <br>
-            <img src="/assets/grass.png" alt="Grass">
-            <img src="/assets/water.png" alt="Grass">
-            <br>
-            <span>Planta | Agua</span>
+          <div class="row justify-content-md-center">
+            <div class="col-4" *ngFor="let type of weakness">
+              <img src="/assets/{{type}}.png" alt="{{type}}">
+              <span>{{type}}</span>
+            </div>
+          </div>
         </div>
         <div class="categoria">
           <p>Categoria</p>
+          <span>{{categoria}}</span>
         </div>
+        <div class="habilidades">
+            <p>Habilidades</p>
+            <span *ngFor="let ability of abilities">{{ability.ability.name}}</span>
+        </div>
+      </div>
+    </div>
+    <p class="evoluciones">Evoluciones</p>
+    <div class="row">
+      <div class="col-4" *ngFor="let evolution of datosEvolucion">
+        <img [src]="evolution.img" alt="{{evolution.name}}">
+        <p>{{evolution.name}}</p>
       </div>
     </div>
   </div>

@@ -22,15 +22,25 @@ export class PokedexService {
         return this.http.get(`${environment.pokedex}/type`);
     }
 
-    register(user: User) {
-        return this.http.post(`${environment.apiUrl}/users/register`, user);
+    getTypeId(name){
+        return this.http.get(`${environment.pokedex}/type/${name}`);
+    }
+
+
+    getSpecies(id) {
+        return this.http.get(`${environment.pokedex}/pokemon-species/${id}`);
+    }
+
+    getGender(id) {
+        return this.http.get(`${environment.pokedex}/gender/${id}`);
+    }
+
+    getEvolution(id) {
+        return this.http.get(`${id}`);
     }
 
     update(user: User) {
         return this.http.put(`${environment.apiUrl}/users/${user.id}`, user);
     }
 
-    delete(id: number) {
-        return this.http.delete(`${environment.apiUrl}/users/${id}`);
-    }
 }
