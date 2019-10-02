@@ -53,9 +53,11 @@ export class PokedexComponent implements OnInit {
     .subscribe(
         data => {
             var url= '';
-            this.user['pokemonsFavorite'].filter(x=>{
-              x.favorite= true;
-            })
+            if(this.user['pokemonsFavorite']){
+              this.user['pokemonsFavorite'].filter(x=>{
+                x.favorite= true;
+              })
+            }
             this.total= data['count'];
             this.pokemonesTemporal= data["results"];
             this.pokemonesTemporal= this.orderPipe.transform(this.pokemonesTemporal, 'name');

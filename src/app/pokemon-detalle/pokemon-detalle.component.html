@@ -2,8 +2,8 @@
 <p class="name" *ngIf="show">{{pokemon.name}} 
   <img *ngFor="let genre of genre" src="/assets/{{genre}}.png" alt="{{genre}}">
 </p>
-<div class="contenedor-detalle">
-  <div class="container text-center" *ngIf="show">
+<div class="contenedor-detalle" *ngIf="show">
+  <div class="container text-center">
     <div class="row">
       <div class="col-7">
           <img [src]="pokemon.sprites.front_default" alt="" class="pokemon">
@@ -73,5 +73,13 @@
       </div>
     </div>
   </div>
-  
+</div>
+<div class="sabias_que" *ngIf="!show">
+  <div class="contenedor_sabias">
+    <div class="contenido_sabias">
+        <p>¿Sabías qué?</p>
+        <p>La palabra pokémon es la contracción de pocket monsters, o sea, monstruos de bolsillo en inglés</p>
+        <p><ngb-progressbar type="info" [value]="100">Cargando...</ngb-progressbar></p>
+    </div>
+  </div>
 </div>
