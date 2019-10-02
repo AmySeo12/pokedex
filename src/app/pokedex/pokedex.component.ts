@@ -22,6 +22,9 @@ export class PokedexComponent implements OnInit {
   nombres= [];
   types;
   active = false;
+  type;
+  keyword;
+  data;
   constructor(private pokedexService: PokedexService, 
     private alertService: AlertService,
     private orderPipe: OrderPipe,
